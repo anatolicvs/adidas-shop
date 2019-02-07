@@ -1,0 +1,46 @@
+{
+  "name": "adidas-shop-server",
+  "version": "1.0.0",
+  "description": "adidas full-stack development challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon src/index.js",
+    "start:ci": "node src/index.js"
+  },
+  "keywords": [
+    "adidas",
+    "full-stack",
+    "development",
+    "challenge"
+  ],
+  "author": "aytac ozkan",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-datasource": "^0.2.2",
+    "apollo-datasource-rest": "^0.2.2",
+    "apollo-server": "^2.3.3",
+    "apollo-server-testing": "^2.3.3",
+    "dotenv": "^6.2.0",
+    "graphql": "^14.1.1",
+    "isemail": "^3.2.0",
+    "mongoose": "^5.4.10",
+    "nodemon": "^1.18.9",
+    "sequelize": "^4.42.0",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "apollo": "^2.4.4",
+    "apollo-link": "^1.2.8",
+    "apollo-link-http": "^1.5.11",
+    "jest": "^24.1.0",
+    "nock": "^10.0.6",
+    "node-fetch": "^2.3.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__utils"
+    ]
+  }
+}
