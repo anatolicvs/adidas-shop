@@ -1,13 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ProductSchema = new Schema({
+const productSchema = new Schema({
     name: String,
     title: String,
     imageUri: String,
     price: Number,
     priceCurrency: String,
-    isBooked: Boolean
+    isBooked: Boolean,
+    dateModified: Date
 });
 
-module.exports = mongoose.model('product_document', ProductSchema);
+module.exports = mongoose.model('Product', productSchema);
+
+

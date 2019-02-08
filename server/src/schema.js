@@ -19,7 +19,7 @@ const typeDefs = gql`
 
  type Mutation {
      # if false, signup failed --check errors
-     addProductToWishlist(productsIds: [ID]!): WishlistUpdateResponse!
+     addProductsToWishlist(productIds: [ID]!): WishlistUpdateResponse!
      # if false, removing processes failed --check errors
      removeProductFromWishlist(productId:ID!): WishlistUpdateResponse!
 
