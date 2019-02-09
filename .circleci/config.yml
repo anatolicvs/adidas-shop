@@ -10,6 +10,7 @@ jobs:
       - run: cd client && npm install
       - run: cd client && npm ci
       - run: cd client && npm test
+      - run: cd client && npx apollo client:check
 
       - run: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
