@@ -27,7 +27,7 @@ export const GET_PRODUCTS = gql`
   ${PRODUCT_TILE_DATA}
 `;
 
-export default function Launches() {
+export default function Products() {
     return (
         <Query query={GET_PRODUCTS}>
             {({ data, loading, error, fetchMore }) => {
@@ -66,7 +66,7 @@ export default function Launches() {
                                     }
                                 >
                                     Load More
-                </Button>
+                    </Button>
                             )}
                     </Fragment>
                 );

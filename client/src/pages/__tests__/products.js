@@ -1,11 +1,12 @@
 import React from 'react';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import {
     renderAdidas,
     cleanup,
     waitForElement,
 } from '../../test-utils';
-import Profile, { GET_MY_WISHLIST } from '../profile';
+import Products, { GET_PRODUCTS } from '../products';
 
 const mockProduct = {
     __typename: 'Product',
@@ -17,28 +18,30 @@ const mockProduct = {
     isInCart: false,
 };
 
-const mockMe = {
-    __typename: 'User',
-    id: 1,
-    email: 'aytac@linux.com',
-    wishlist: [mockProduct],
-};
-
-describe('Profile Page', () => {
+describe('Products Page', () => {
     // automatically unmount and cleanup DOM after the test is finished.
     afterEach(cleanup);
 
-    it('renders profile page', async () => {
+    it('renders products', async () => {
+        const cache = new InMemoryCache({ addTypename: false });
         const mocks = [
             {
-                request: { query: GET_MY_WISHLIST },
-                result: { data: { me: mockMe } },
+                request: { query: GET_PRODUCTS },
+                result: {
+                    data: {
+                        products: {
+                            cursor: '123',
+                            hasMore: true,
+                            products: [mockProduct],
+                        },
+                    },
+                },
             },
         ];
-
-        const { getByText } = renderAdidas(<Profile />, { mocks });
-
-        // if the profile renders, it will have the list of products in the wishlist
+        const { getByText } = await renderAdidas(<Products />, {
+            mocks,
+            cache,
+        });
         await waitForElement(() => getByText(/Manchester United Üçüncü Takım Forması/i));
     });
 });

@@ -1,11 +1,10 @@
 import React from 'react';
-
 import {
     renderAdidas,
     cleanup,
     waitForElement,
 } from '../../test-utils';
-import Profile, { GET_MY_WISHLIST } from '../profile';
+import Product, { GET_PRODUCT_DETAILS } from '../product';
 
 const mockProduct = {
     __typename: 'Product',
@@ -17,28 +16,20 @@ const mockProduct = {
     isInCart: false,
 };
 
-const mockMe = {
-    __typename: 'User',
-    id: 1,
-    email: 'aytac@linux.com',
-    wishlist: [mockProduct],
-};
-
-describe('Profile Page', () => {
+describe('Product Page', () => {
     // automatically unmount and cleanup DOM after the test is finished.
     afterEach(cleanup);
 
-    it('renders profile page', async () => {
+    it('renders product', async () => {
         const mocks = [
             {
-                request: { query: GET_MY_WISHLIST },
-                result: { data: { me: mockMe } },
+                request: { query: GET_PRODUCT_DETAILS, variables: { productId: "5c5d273a404753b93ea1c71f" } },
+                result: { data: { product: mockProduct } },
             },
         ];
-
-        const { getByText } = renderAdidas(<Profile />, { mocks });
-
-        // if the profile renders, it will have the list of products in the wishlist
-        await waitForElement(() => getByText(/Manchester United Üçüncü Takım Forması/i));
+        const { getByText } = await renderAdidas(<Product productId={"5c5d273a404753b93ea1c71f"} />, {
+            mocks,
+        });
+        await waitForElement(() => getByText(/Remove from Wishlist/i));
     });
 });

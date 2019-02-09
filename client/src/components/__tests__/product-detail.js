@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, cleanup } from '../../test-utils';
-import LaunchDetail from '../launch-detail';
+import ProductDetail from '../product-detail';
 
 describe('Launch Detail View', () => {
     // automatically unmount and cleanup DOM after the test is finished.
@@ -9,7 +9,7 @@ describe('Launch Detail View', () => {
 
     it('renders without error', () => {
         render(
-            <LaunchDetail
+            <ProductDetail
                 id={1}
                 site={'earth'}
                 rocket={{ name: 'that one', type: 'big' }}

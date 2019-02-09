@@ -3,7 +3,7 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
 
 import {
-  renderApollo,
+  renderAdidas,
   cleanup,
   fireEvent,
   waitForElement,
@@ -15,7 +15,7 @@ describe('Login Page', () => {
   afterEach(cleanup);
 
   it('renders login page', async () => {
-    renderApollo(<Login />);
+    renderAdidas(<Login />);
   });
 
   it('fires login mutation and updates cache after done', async () => {
@@ -27,7 +27,7 @@ describe('Login Page', () => {
       },
     ];
 
-    const {getByText, getByTestId} = await renderApollo(<Login />, {
+    const {getByText, getByTestId} = await renderAdidas(<Login />, {
       mocks,
       cache,
     });
