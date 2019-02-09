@@ -25,7 +25,7 @@ jobs:
       - checkout
       - run: cd server && npm install
       - run: cd server && npm ci
-      - run: cd server && npm test
+
 
       - run:
           name: Starting server
