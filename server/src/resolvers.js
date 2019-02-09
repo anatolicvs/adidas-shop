@@ -13,6 +13,8 @@ module.exports = {
                 results: allProducts,
             });
 
+            console.log(products.length);
+
             return {
                 products,
                 cursor: products.length ? products[products.length - 1].cursor : null,

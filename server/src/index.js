@@ -59,7 +59,7 @@ const server = new ApolloServer({
 if (process.env.NODE_ENV !== 'test')
     server
         .listen({ port: 4000 })
-        .then(({ url }) => console.log(`ðŸš€ app running at ${url}`));
+        .then(({ url }) => console.log(`🚀 app running at ${url}`));
 
 // export all the important pieces for integration/e2e tests to use
 module.exports = {
