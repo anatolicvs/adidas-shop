@@ -7,9 +7,10 @@ export default ({ product }) => {
     const {
         id,
         name,
-        title,
+        //title,
         imageUri,
-        isBooked } = product;
+        //isBooked
+    } = product;
     return (
         <StyledLink
             to={`/product/${id}`}
