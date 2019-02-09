@@ -9,7 +9,6 @@ jobs:
       - checkout
       - run: cd client && npm install
       - run: cd client && npm ci
-      - run: cd client && npm test
       - run: cd client && npx apollo client:check
 
       - run: |
@@ -25,8 +24,6 @@ jobs:
       - checkout
       - run: cd server && npm install
       - run: cd server && npm ci
-
-
       - run:
           name: Starting server
           command: cd server && npm run start:ci
