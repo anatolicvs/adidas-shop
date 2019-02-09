@@ -1,7 +1,9 @@
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 from mongoengine import *
-from ProductDocument import ProductDocument
+from ProductDocument import Products
+import datetime
+import time
 
 connect(
     db='adidas-products',
@@ -20,17 +22,18 @@ headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) '
 
 user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46'
 
-url = "https://www.adidas.com.tr/tr/erkek-forma-tekstil"
+url = "https://www.adidas.com.tr/tr/erkek-futbol"
 req = Request(url, headers={'User-Agent': user_agent})
 
 
-class Product:
-    def __init__(self, name, img, title, price, price_currency):
+class ProductDocument:
+    def __init__(self, name, img, title, price, price_currency, cursor):
         self._name = name
         self._price = price
         self._img = img
         self._title = title
         self._price_currency = price_currency
+        self._cursor = cursor
 
     def name(self):
         return self._name
@@ -46,6 +49,9 @@ class Product:
 
     def price_currency(self):
         return self._price_currency
+
+    def cursor(self):
+        return self._cursor
 
 
 def match_class(target):
@@ -83,16 +89,17 @@ for m in matches:
         price = product_price_matches[i].span.text
         price_currency = product_price_currency_matches[i].text
         img = product_image_matches[i].img['data-original']
-        p = Product(name, img, title, price, price_currency)
+        cursor = int(time.time())
+        p = ProductDocument(name, img, title, price, price_currency, cursor)
         product_list.append(p)
 
     for product in product_list:
-
-        pd = ProductDocument(
+        pd = Products(
             name=product.name(),
             title=product.title(),
             imageUri=product.img(),
             price=product.price(),
+            cursor=product.cursor(),
             priceCurrency=product.price_currency()
         )
         pd.save()
