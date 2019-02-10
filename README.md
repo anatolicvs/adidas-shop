@@ -35,10 +35,16 @@ cd server && yarn test
 
 For host the api and the spa: I used nginx and docker,  
 
-## How can I run ? 
+## How can I run? 
 
 It's very simple:
 
 ```console
 docker-compose up
 ```
+
+## What about watching quick Introduction of the project?
+
+I prepared a quick demo, you can find under the intro folder. :) 
+
+Best Regards
