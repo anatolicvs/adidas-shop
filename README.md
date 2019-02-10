@@ -1,1 +1,1 @@
-# adidas-shop
+# Adidas Coding Challenges
