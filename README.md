@@ -1,6 +1,8 @@
 # Adidas Coding Challenges
 
-First of all thank you for invating to your interview. I appreciated so much and I tried to do my best. The project structure is as below;
+First of all thank you for invating to your interview. I appreciated it so much and I tried to do my best. 
+
+The project structure is as below;
 
 ```console
 └── adidas-shop
