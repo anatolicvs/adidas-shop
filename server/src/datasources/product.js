@@ -13,7 +13,8 @@ class ProductAPI {
                 imageUri: product.imageUri,
                 price: product.price,
                 priceCurrency: product.priceCurrency,
-                isBooked: product.isBooked
+                isBooked: product.isBooked,
+                cursor: product.cursor
             };
         else
             return null;
@@ -23,6 +24,13 @@ class ProductAPI {
         const res = await Product.find({});
 
         // transform the raw launches to a more friendly
+        return res && res.length ? res.map(l => this.productReducer(l)) : [];
+    }
+
+    async searchProducts({filter}) {
+
+        const res = await Product.find({'name' : { '$regex' : filter, '$options' : 'i' }});
+
         return res && res.length ? res.map(l => this.productReducer(l)) : [];
     }
 

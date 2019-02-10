@@ -19,6 +19,7 @@ export const GET_PRODUCTS = gql`
   query GetProductList($after: String) {
     products(after: $after) {
       hasMore
+      cursor
       products {
          ...ProductTile
       }
@@ -53,10 +54,10 @@ export default function Products() {
                                                 if (!fetchMoreResult) return prev;
                                                 return {
                                                     ...fetchMoreResult,
-                                                    launches: {
+                                                    products: {
                                                         ...fetchMoreResult.products,
-                                                        launches: [
-                                                            ...prev.launches.products,
+                                                        products: [
+                                                            ...prev.products.products,
                                                             ...fetchMoreResult.products.products,
                                                         ],
                                                     },

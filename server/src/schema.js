@@ -15,6 +15,9 @@ const typeDefs = gql`
     ):ProductList!
     product(id:ID!): Product
     me:User
+    search(filter: String
+           pageSize: Int
+           after: String):ProductList!
  }
 
  type Mutation {
@@ -22,7 +25,6 @@ const typeDefs = gql`
      addProductsToWishlist(productIds: [ID]!): WishlistUpdateResponse!
      # if false, removing processes failed --check errors
      removeProductFromWishlist(productId:ID!): WishlistUpdateResponse!
-
      login(email:String): String # login token
  }
 
@@ -43,6 +45,7 @@ type Product {
     name:String
     title: String
     imageUri: String
+    cursor: Int
     priceCurrency: String
     isBooked: Boolean!
 }

@@ -8,7 +8,8 @@ const productSchema = new Schema({
     price: Number,
     priceCurrency: String,
     isBooked: Boolean,
-    dateModified: Date
+    dateModified: Date,
+    cursor: Number
 });
 
 module.exports = mongoose.model('Product', productSchema);

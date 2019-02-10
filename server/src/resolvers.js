@@ -13,8 +13,6 @@ module.exports = {
                 results: allProducts,
             });
 
-            console.log(products.length);
-
             return {
                 products,
                 cursor: products.length ? products[products.length - 1].cursor : null,
@@ -23,6 +21,29 @@ module.exports = {
                 hasMore: products.length
                     ? products[products.length - 1].cursor !==
                     allProducts[allProducts.length - 1].cursor
+                    : false,
+            };
+        },
+
+        search: async (_, { filter, pageSize = 5, after }, { dataSources }) => {
+            const searchedProducts = await dataSources.ProductAPI.searchProducts({filter});
+
+            searchedProducts.reverse();
+
+            const products = paginateResults({
+                after,
+                pageSize,
+                results: searchedProducts,
+            });
+
+            return {
+                products,
+                cursor: products.length ? products[products.length - 1].cursor : null,
+                // if the cursor of the end of the paginated results is the same as the
+                // last item in _all_ results, then there are no more results after this
+                hasMore: products.length
+                    ? products[products.length - 1].cursor !==
+                    searchedProducts[searchedProducts.length - 1].cursor
                     : false,
             };
         },
