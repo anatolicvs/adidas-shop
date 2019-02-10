@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  adidas.shop.server:
+    build: ./server/
+    ports:
+     - "4000:4000"
+
+  adidas.shop.client:
+    build: ./client/
+    ports:
+      - "8000:80"

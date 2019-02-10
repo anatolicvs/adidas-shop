@@ -4,7 +4,7 @@ const isEmail = require('isemail');
 
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
-const { createStore } = require('./utils');
+const { createStore, textLogoAdidas } = require('./utils');
 
 mongoose.connect("mongodb://adidas:adidas06@ds125525.mlab.com:25525/adidas-products", { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
@@ -59,7 +59,9 @@ const server = new ApolloServer({
 if (process.env.NODE_ENV !== 'test')
     server
         .listen({ port: 4000 })
-        .then(({ url }) => console.log(`🚀 app running at ${url}`));
+        .then(({ url }) => (console.log(`🚀 app running at ${url}`),
+            console.log(textLogoAdidas))
+        );
 
 // export all the important pieces for integration/e2e tests to use
 module.exports = {
