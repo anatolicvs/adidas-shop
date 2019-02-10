@@ -14,7 +14,7 @@ mongoose.connection.once('open', () => {
 const ProductAPI = require("./datasources/product");
 const UserAPI = require('./datasources/user');
 
-const internalEngineDemo = require('./engine-adidas');
+const internalEngine = require('./engine-adidas');
 
 // creates a sequelize connection once. NOT for every request
 const store = createStore();
@@ -50,7 +50,7 @@ const server = new ApolloServer({
     context,
     engine: {
         apiKey: process.env.ENGINE_API_KEY,
-        ...internalEngineDemo,
+        ...internalEngine,
     },
 });
 
