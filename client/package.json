@@ -2,6 +2,8 @@
   "name": "adidas-sho-client",
   "version": "0.1.0",
   "private": true,
+  "author": "aytac ozkan",
+  "license": "MIT",
   "dependencies": {
     "@adidas/yarn-design-system": "^1.5.1",
     "@reach/router": "^1.2.1",
