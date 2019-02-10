@@ -4,11 +4,11 @@ First of all thank you for invating to your interview. I appreciated so much and
 
 ```console
 └── adidas-shop
-    ├── client http://localhost:8000/
+    ├── client $ yarn start | http://localhost:8000/ 
     ├── data-importer
     ├── intro
     ├── ml-service
-    ├── server http://localhost:4000/
+    ├── server $ yarn start | http://localhost:4000/  
     ├── docker-compose-yml
     └── README.md
 ```
