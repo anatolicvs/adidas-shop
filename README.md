@@ -26,7 +26,7 @@ For the frontend technologies: I used the react and apollo-client (GraphQL). I d
 Because;
     If you can use GraphQL instead of REST, you should. Switching will get rid of a huge amount of complexity in your client-side state management and reduce the scope of your client side code to just how data should render in the UI (which is what it should have been all along).
 
-For the backend side technologies: I used nodeJs,GraphQL, Mongodb, Sqllite ...
+For the backend side technologies: I used nodeJs,GraphQL, Mongodb, Sqllite etc.
 
 e.g
 ```console
