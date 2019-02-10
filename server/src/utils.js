@@ -40,7 +40,7 @@ module.exports.createStore = () => {
         dialect: 'sqlite',
         storage: './store.sqlite',
         operatorsAliases,
-        logging: false,
+        logging: true,
     });
 
     const users = db.define('user', {
@@ -55,6 +55,8 @@ module.exports.createStore = () => {
         token: SQL.STRING,
     });
 
+    users.sync();
+
     const wishlist = db.define('wishlist', {
         id: {
             type: SQL.INTEGER,
@@ -67,7 +69,9 @@ module.exports.createStore = () => {
         userId: SQL.INTEGER,
     });
 
-    db.sync();
+    wishlist.sync();
+
+    db.sync({ force: true });
 
     return { users, wishlist };
 };
