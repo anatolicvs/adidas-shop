@@ -15,7 +15,7 @@ First of all thank you for invating to your interview. I appreciated so much and
 
 ## Which technologies are used and Why?
 
-During the project development process, I adopted TDD development approach through the project. For example on the app's front side, each component has unique test component.
+During the project development process, I adopted TDD development approach through the project. For example on the app's frontend side, each component has unique test component.
 
 e.g
 ```console
