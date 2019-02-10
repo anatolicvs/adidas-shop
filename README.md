@@ -4,11 +4,11 @@ First of all thank you for invating to your interview. I appreciated so much and
 
 ```console
 └── adidas-shop
-    ├── client
+    ├── client http://localhost:8000/
     ├── data-importer
     ├── intro
     ├── ml-service
-    ├── server
+    ├── server http://localhost:4000/
     ├── docker-compose-yml
     └── README.md
 ```
@@ -43,8 +43,42 @@ It's very simple:
 docker-compose up
 ```
 
+Some dummy graphql queries:
+```
+query {
+  search(filter: "Manchester") {
+    hasMore
+    cursor
+    products {
+      name
+      id
+      title
+      cursor
+    }
+  }
+}
+```
+
+```
+query {
+  products(after:"1549608748") {
+    cursor
+    products {
+      name
+    }
+  }
+}
+```
+
+
 ## What about watching quick Introduction of the project?
 
-I prepared a quick demo, you can find under the intro folder. :) 
+I prepared a quick demo, you can find under the `intro` folder. :) 
+
+
+
+
 
 Best Regards
+
+Aytaç Özkan
