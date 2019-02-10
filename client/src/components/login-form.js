@@ -64,6 +64,16 @@ const Container = styled('div')({
     backgroundPosition: 'center',
 });
 
+export const FormContainer = styled('div')({
+    width: '100%',
+    maxWidth: 550,
+    padding: unit * 3.5,
+    borderRadius: 3,
+    boxShadow: '6px 6px 1px rgba(0, 0, 0, 0.25)',
+    color: colors.text,
+    backgroundColor: 'white',
+});
+
 const svgClassName = css({
     display: 'block',
     fill: 'currentColor',
@@ -98,9 +108,9 @@ const StyledAdidasLogo = styled(Adidas)(svgClassName, {
     width: 250,
 });
 
-const StyledForm = styled('form')({
+export const StyledForm = styled('form')({
     width: '100%',
-    maxWidth: 406,
+    maxWidth: 550,
     padding: unit * 3.5,
     borderRadius: 3,
     boxShadow: '6px 6px 1px rgba(0, 0, 0, 0.25)',
@@ -108,7 +118,7 @@ const StyledForm = styled('form')({
     backgroundColor: 'white',
 });
 
-const StyledInput = styled('input')({
+export const StyledInput = styled('input')({
     width: '100%',
     marginBottom: unit * 2,
     padding: `${unit * 1.25}px ${unit * 2.5}px`,
