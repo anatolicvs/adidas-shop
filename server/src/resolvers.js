@@ -60,7 +60,7 @@ module.exports = {
                 productIds,
             });
 
-            console.log("addProductsToWishlist");
+            console.log(".::addProductsToWishlist::.");
             console.log(results);
 
             return {
