@@ -75,7 +75,7 @@ query {
 
 I prepared a quick demo, you can find under the `intro` folder. :) 
 
-
+Also, while you test it locally in your machine, you should remove store.sqlite file from server folder.
 
 
 

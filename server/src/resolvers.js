@@ -4,6 +4,7 @@ module.exports = {
     Query: {
         products: async (_, { pageSize = 20, after }, { dataSources }) => {
             const allProducts = await dataSources.ProductAPI.getAllProducts();
+
             // we want these in reverse chronological order
             allProducts.reverse();
 
@@ -26,7 +27,7 @@ module.exports = {
         },
 
         search: async (_, { filter, pageSize = 5, after }, { dataSources }) => {
-            const searchedProducts = await dataSources.ProductAPI.searchProducts({filter});
+            const searchedProducts = await dataSources.ProductAPI.searchProducts({ filter });
 
             searchedProducts.reverse();
 
@@ -58,6 +59,9 @@ module.exports = {
             const products = await dataSources.ProductAPI.getProductsByIds({
                 productIds,
             });
+
+            console.log("addProductsToWishlist");
+            console.log(results);
 
             return {
                 success: results && results.length === productIds.length,

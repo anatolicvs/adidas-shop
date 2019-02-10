@@ -27,9 +27,9 @@ class ProductAPI {
         return res && res.length ? res.map(l => this.productReducer(l)) : [];
     }
 
-    async searchProducts({filter}) {
+    async searchProducts({ filter }) {
 
-        const res = await Product.find({'name' : { '$regex' : filter, '$options' : 'i' }});
+        const res = await Product.find({ 'name': { '$regex': filter, '$options': 'i' } });
 
         return res && res.length ? res.map(l => this.productReducer(l)) : [];
     }

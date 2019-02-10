@@ -6,7 +6,20 @@ const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 const { createStore, textLogoAdidas } = require('./utils');
 
-mongoose.connect("mongodb://adidas:adidas06@ds125525.mlab.com:25525/adidas-products", { useNewUrlParser: true });
+mongoose.connect("mongodb://adidas:adidas06@ds125525.mlab.com:25525/adidas-products", {
+    autoReconnect: true,
+
+    poolSize: 20,
+    socketTimeoutMS: 480000,
+    keepAlive: 300000,
+
+    keepAliveInitialDelay: 300000,
+    connectTimeoutMS: 30000,
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 1000,
+    useNewUrlParser: true
+});
+
 mongoose.connection.once('open', () => {
     console.log("connected to database.");
 });
