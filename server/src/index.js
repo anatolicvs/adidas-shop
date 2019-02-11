@@ -35,7 +35,7 @@ const store = createStore();
 // set up any dataSources our resolvers need
 const dataSources = () => ({
     ProductAPI: new ProductAPI(),
-    userAPI: new UserAPI({ store }),
+    UserAPI: new UserAPI({ store }),
 });
 
 // the function that sets up the global context for each resolver, using the req
