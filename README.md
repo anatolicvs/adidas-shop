@@ -1,36 +1,36 @@
 # Adidas Coding Challenges
 
-First of all thank you for inviting to your interview. I appreciated it so much and I tried to do my best. 
+First of all thank you for inviting me for the interview. I highly appreciate this opportunity and have tried to do my best. 
 
-The project structure is as below;
+The project structure is as below:
 
 ```console
 └── adidas-shop
-    ├── client $ yarn start | http://localhost:8000/ 
-    ├── data-importer
-    ├── intro
-    ├── ml-service
-    ├── server $ yarn start | http://localhost:4000/  
-    ├── docker-compose-yml
-    └── README.md
+    ├── client $ yarn start | http://localhost:8000/ 
+    ├── data-importer
+    ├── intro
+    ├── ml-service
+    ├── server $ yarn start | http://localhost:4000/  
+    ├── docker-compose-yml
+    └── README.md
 ```
 
-## Which technologies are used and Why?
+## Which Technologies are Used and Why?
 
-During the project development process, I adopted TDD development approach through the project. For example on the app's frontend side, each component has unique test component.
+I adopted TDD development approach  as the development process for the project. For example on the app's frontend side, each component has a unique test component.
 
 e.g
 ```console
 cd client && yarn test 
 ```
-For the frontend technologies: I used the react and apollo-client (GraphQL). I didn't use redux to managed the application states. Why? 
+For the frontend technologies: I used the react and apollo-client (GraphQL). I didn't use redux to manage the application states. Why? 
 
 Because;
-    If you can use GraphQL instead of REST, you should. Switching will get rid of a huge amount of complexity in your client-side state management and reduce the scope of your client side code to just how data should render in the UI (which is what it should have been all along).
+    Using GraphQL instead of REST will get rid of a huge amount of complexity in your client-side state management and reduce the scope of your client side code to just how data should render in the UI.
 
 For the backend side technologies: I used nodeJs,GraphQL, Mongodb, Sqllite etc.
 
-e.g
+E.g
 ```console
 cd server && yarn test 
 ```
@@ -73,11 +73,11 @@ query {
 ```
 
 
-## What about watching quick Introduction of the project?
+## How about watching a quick Introduction to the project?
 
-I prepared a quick demo video, you can find under the `intro` folder. :) 
+I prepared a quick demo video that you can find under the `intro` folder. :) 
 
-Also, while you test it locally in your machine, you should remove store.sqlite file from server folder.
+Also, while you test it locally on your machine, you should remove store.sqlite file from server folder.
 
 
 
