@@ -51,11 +51,11 @@ module.exports = {
         product: (_, { id }, { dataSources }) =>
             dataSources.ProductAPI.getProductById({ productId: id }),
         me: async (_, __, { dataSources }) =>
-            dataSources.userAPI.findOrCreateUser(),
+            dataSources.UserAPI.findOrCreateUser(),
     },
     Mutation: {
         addProductsToWishlist: async (_, { productIds }, { dataSources }) => {
-            const results = await dataSources.userAPI.addProductsToWishlist({ productIds });
+            const results = await dataSources.UserAPI.addProductsToWishlist({ productIds });
             const products = await dataSources.ProductAPI.getProductsByIds({
                 productIds,
             });
@@ -75,7 +75,7 @@ module.exports = {
             };
         },
         removeProductFromWishlist: async (_, { productId }, { dataSources }) => {
-            const result = dataSources.userAPI.removeProductFromWishlist({ productId });
+            const result = dataSources.UserAPI.removeProductFromWishlist({ productId });
 
             if (!result)
                 return {
@@ -91,19 +91,19 @@ module.exports = {
             };
         },
         login: async (_, { email }, { dataSources }) => {
+            const user = await dataSources.UserAPI.findOrCreateUser({ email });
 
-            const user = await dataSources.userAPI.findOrCreateUser({ email });
             if (user) return new Buffer(email).toString('base64');
         },
     },
     Product: {
         isBooked: async (product, _, { dataSources }) =>
-            dataSources.userAPI.isBookedOnWishlist({ productId: product.id }),
+            dataSources.UserAPI.isBookedOnWishlist({ productId: product.id }),
     },
     User: {
         wishlist: async (_, __, { dataSources }) => {
             // get ids of products by user
-            const productIds = await dataSources.userAPI.getProductIdsByUser();
+            const productIds = await dataSources.UserAPI.getProductIdsByUser();
 
             if (!productIds.length) return [];
 
