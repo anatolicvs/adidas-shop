@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
-import { FormContainer, StyledInput } from '../components/login-form';
+import { FormContainer } from '../components/login-form';
 import { ProductTile, Header, Button, Loading } from '../components';
+import Autocomplete from '../components/autocomplete';
 
 export const PRODUCT_TILE_DATA = gql`
   fragment ProductTile on Product {
@@ -44,6 +45,11 @@ export const SEARCH_PRODUCTS = gql`
 
 class Products extends React.Component {
 
+    constructor(props) {
+        super();
+        this.searchTextInput = React.createRef();
+    }
+
     state = {
         products: [],
         filter: '',
@@ -60,12 +66,15 @@ class Products extends React.Component {
                         <Fragment>
                             <Header />
                             <FormContainer>
-                                <StyledInput
+                                <Autocomplete
+                                    ref={this.searchTextInput}
+                                    id="search"
                                     required
                                     type="text"
-                                    name="search"
-                                    placeholder="Type Product Name"
-                                    onChange={this._onChange}
+                                    suggestions={data.products.products.map(product => {
+                                        return product.name;
+                                    })}
+                                    value={this.state.filter}
                                 />
                                 <Button type="submit" onClick={this._executeSearch}>Search</Button>
                             </FormContainer>
@@ -113,18 +122,15 @@ class Products extends React.Component {
         );
     }
 
-    _onChange = event => {
-        const filter = event.target.value;
-        this.setState(s => ({ filter }));
-    };
-    _executeSearch = async () => {
+    _executeSearch = async (props) => {
 
-        const { filter } = this.state
-        if (filter) {
+        const userInput = this.searchTextInput.current.state.userInput.trim();
+
+        if (userInput) {
             const result = await this.props.client.query({
                 query: SEARCH_PRODUCTS,
-                variables: { filter },
-            })
+                variables: { filter: userInput },
+            });
             const products = result.data.search.products;
             this.setState({ products, isSearched: true });
         } else {

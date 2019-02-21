@@ -1,5 +1,5 @@
 {
-  "name": "adidas-sho-client",
+  "name": "adidas-shop-client",
   "version": "0.1.0",
   "private": true,
   "author": "aytac ozkan",
@@ -16,6 +16,7 @@
     "install": "^0.12.2",
     "npm": "^6.7.0",
     "polished": "^2.3.3",
+    "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-apollo": "alpha",
     "react-dom": "^16.7.0",
