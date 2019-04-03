@@ -1,7 +1,5 @@
 # Adidas Coding Challenges
 
-First of all thank you for inviting me for the interview. I highly appreciate this opportunity and have tried to do my best. 
-
 The project structure is as below:
 
 ```console
@@ -71,16 +69,3 @@ query {
   }
 }
 ```
-
-
-## How about watching a quick Introduction to the project?
-
-I prepared a quick demo video that you can find under the `intro` folder. :) 
-
-Also, while you test it locally on your machine, you should remove store.sqlite file from server folder.
-
-
-
-Best Regards
-
-Aytaç Özkan
